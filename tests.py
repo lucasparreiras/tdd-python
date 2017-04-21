@@ -20,6 +20,20 @@ class TestHome(unittest.TestCase):
         self.assertIn('<h1>Lucas Parreiras</h1>', str(response_str))
         self.assertIn('<p>Programador', str(response_str))
 
+    def test_bootstrap_css(self):
+        response_str = self.response.data.decode('utf-8')
+        self.assertIn('bootstrap.min.css', str(response_str))
+
+    def test_profile_img(self):
+        response_str = self.response.data.decode('utf-8')
+        self.assertIn('<img src="', str(response_str))
+        self.assertIn('class="img-circle"', str(response_str))
+
+    def test_lik_linkedIN(self):
+        response_str = self.response.data.decode('utf-8')
+        self.assertIn('<a class="btn btn-primary btn-lg"',str(response_str))
+        self.assertIn('>LinkedIn</a>',str(response_str))
+
 
 if __name__ == '__main__':
     unittest.main()
